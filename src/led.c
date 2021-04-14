@@ -1,0 +1,16 @@
+#include "led.h"
+
+void led_init(void)
+{
+	rcu_periph_clock_enable(LED_GPIO_CLK_R);
+	rcu_periph_clock_enable(LED_GPIO_CLK_G);
+
+	gpio_init(GPIO_PORT_LED_R, GPIO_MODE_OUT_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_LED_R);
+	gpio_init(GPIO_PORT_LED_G, GPIO_MODE_OUT_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_LED_G);
+	gpio_init(GPIO_PORT_LED_B, GPIO_MODE_OUT_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_LED_B);
+
+	GPIO_BOP(GPIO_PORT_LED_R) = GPIO_PIN_LED_R;
+	GPIO_BOP(GPIO_PORT_LED_G) = GPIO_PIN_LED_G;
+	GPIO_BOP(GPIO_PORT_LED_B) = GPIO_PIN_LED_B;
+}
+
